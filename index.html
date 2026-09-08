@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🫘 KidneyGuard — CKD Early Detection System</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+
+<!-- Header -->
+<header>
+  <div class="logo">
+    <div class="logo-icon">🫘</div>
+    <h1>Kidney<span>Guard</span></h1>
+  </div>
+  <p>AI-powered CKD early-detection screening — clinically grounded, stage-by-stage</p>
+  <div class="sources">
+    <span class="source-badge">📚 Harvard Medical School</span>
+    <span class="source-badge">🏥 NIDDK / NIH</span>
+    <span class="source-badge">🔬 KDIGO Guidelines 2024</span>
+    <span class="source-badge">⚕️ National Kidney Foundation</span>
+    <span class="source-badge">🌐 Mayo Clinic</span>
+  </div>
+</header>
+
+<!-- Named Stepper -->
+<div class="stepper-wrap" id="stepper-wrap">
+  <div class="stepper">
+    <div class="step"><div class="step-circle" id="sc-0">1</div><div class="step-name" id="sn-0">Info</div></div>
+    <div class="step-connector" id="sl-0"></div>
+    <div class="step"><div class="step-circle" id="sc-1">2</div><div class="step-name" id="sn-1">Health</div></div>
+    <div class="step-connector" id="sl-1"></div>
+    <div class="step"><div class="step-circle" id="sc-2">S1</div><div class="step-name" id="sn-2">Stage 1</div></div>
+    <div class="step-connector" id="sl-2"></div>
+    <div class="step"><div class="step-circle" id="sc-3">S2</div><div class="step-name" id="sn-3">Stage 2</div></div>
+    <div class="step-connector" id="sl-3"></div>
+    <div class="step"><div class="step-circle" id="sc-4">S3</div><div class="step-name" id="sn-4">Stage 3</div></div>
+    <div class="step-connector" id="sl-4"></div>
+    <div class="step"><div class="step-circle" id="sc-5">S4</div><div class="step-name" id="sn-5">Stage 4</div></div>
+    <div class="step-connector" id="sl-5"></div>
+    <div class="step"><div class="step-circle" id="sc-6">S5</div><div class="step-name" id="sn-6">Stage 5</div></div>
+  </div>
+</div>
+
+<!-- ══ LANDING ══ -->
+<div id="screen-landing">
+  <div class="card" style="text-align:center;padding:46px 38px 38px;">
+    <div style="font-size:3.8rem;margin-bottom:14px;animation:fadeUp .5s ease both;">🫘</div>
+    <h2 style="font-size:1.7rem;font-weight:800;margin-bottom:10px;animation:fadeUp .5s .08s ease both;">CKD Early Detection Screening</h2>
+    <p style="color:var(--muted);max-width:520px;margin:0 auto 22px;line-height:1.7;font-size:.93rem;animation:fadeUp .5s .14s ease both;">
+      Chronic Kidney Disease affects <strong style="color:var(--secondary)">1 in 7 adults</strong> worldwide — 90% don't know it until Stage 3+.
+      This tool screens stage-by-stage using validated criteria from <strong style="color:var(--text)">Harvard, NIDDK &amp; KDIGO 2024</strong>.
+    </p>
+
+    <!-- Stats row -->
+    <div style="display:flex;justify-content:center;gap:28px;flex-wrap:wrap;margin-bottom:28px;animation:fadeUp .5s .2s ease both;">
+      <div style="text-align:center;"><div style="font-size:1.55rem;font-weight:800;color:var(--secondary)">5</div><div style="font-size:.72rem;color:var(--muted)">CKD Stages</div></div>
+      <div style="text-align:center;"><div style="font-size:1.55rem;font-weight:800;color:var(--secondary)">60+</div><div style="font-size:.72rem;color:var(--muted)">Clinical Symptoms</div></div>
+      <div style="text-align:center;"><div style="font-size:1.55rem;font-weight:800;color:var(--secondary)">CKD-EPI</div><div style="font-size:.72rem;color:var(--muted)">eGFR Formula</div></div>
+      <div style="text-align:center;"><div style="font-size:1.55rem;font-weight:800;color:var(--secondary)">~5 min</div><div style="font-size:.72rem;color:var(--muted)">Assessment</div></div>
+    </div>
+
+    <!-- How it works -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:30px;animation:fadeUp .5s .26s ease both;text-align:left;">
+      <div style="background:rgba(13,148,136,.07);border:1px solid rgba(13,148,136,.2);border-radius:14px;padding:16px 16px 14px;">
+        <div style="font-size:1.6rem;margin-bottom:8px;">📋</div>
+        <div style="font-size:.82rem;font-weight:700;margin-bottom:4px;color:var(--text);">1. Personal Profile</div>
+        <div style="font-size:.76rem;color:var(--muted);line-height:1.5;">Age, BMI, blood group, ethnicity — calibrates your baseline CKD risk.</div>
+      </div>
+      <div style="background:rgba(249,115,22,.07);border:1px solid rgba(249,115,22,.2);border-radius:14px;padding:16px 16px 14px;">
+        <div style="font-size:1.6rem;margin-bottom:8px;">🩺</div>
+        <div style="font-size:.82rem;font-weight:700;margin-bottom:4px;color:var(--text);">2. Stage-by-Stage Scan</div>
+        <div style="font-size:.76rem;color:var(--muted);line-height:1.5;">60+ symptoms across all 5 CKD stages — each weighted by clinical severity.</div>
+      </div>
+      <div style="background:rgba(34,197,94,.07);border:1px solid rgba(34,197,94,.2);border-radius:14px;padding:16px 16px 14px;">
+        <div style="font-size:1.6rem;margin-bottom:8px;">📊</div>
+        <div style="font-size:.82rem;font-weight:700;margin-bottom:4px;color:var(--text);">3. AI-Graded Results</div>
+        <div style="font-size:.76rem;color:var(--muted);line-height:1.5;">Risk score, diet plan, nearest nephrologists &amp; blood banks — all in one report.</div>
+      </div>
+    </div>
+
+    <!-- Features list -->
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:28px;animation:fadeUp .5s .32s ease both;">
+      <span style="background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:5px 12px;font-size:.77rem;color:var(--muted);">📐 CKD-EPI 2021 eGFR Calculator</span>
+      <span style="background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:5px 12px;font-size:.77rem;color:var(--muted);">📊 Visual Risk Charts</span>
+      <span style="background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:5px 12px;font-size:.77rem;color:var(--muted);">📍 Nearby Doctor Locator</span>
+      <span style="background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:5px 12px;font-size:.77rem;color:var(--muted);">🩸 Blood Group Compatibility</span>
+      <span style="background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:5px 12px;font-size:.77rem;color:var(--muted);">🥗 Personalised Diet Plan</span>
+      <span style="background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:5px 12px;font-size:.77rem;color:var(--muted);">💾 Assessment History</span>
+    </div>
+
+    <div style="animation:fadeUp .5s .38s ease both;">
+      <button class="hero-btn" onclick="showScreen('screen-info')">
+        <span class="btn-pulse"></span>Begin Free Assessment
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+      <p style="font-size:.74rem;color:var(--muted);margin-top:12px;">Free · Private · No signup · Not a substitute for medical diagnosis</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PERSONAL INFO ══ -->
+<div id="screen-info" class="hidden">
+  <div class="card">
+    <div class="card-title">👤 Personal Information</div>
+    <p class="card-sub">Your demographics calibrate CKD risk — age, sex, and ethnicity are independent risk factors per NIDDK guidelines.</p>
+    <div class="form-grid">
+      <div class="field"><label class="field-label">FULL NAME</label><input type="text" id="f-name" placeholder="e.g. John Smith" oninput="updateBMI()"></div>
+      <div class="field"><label class="field-label">AGE</label><input type="number" id="f-age" placeholder="e.g. 45" min="1" max="120" oninput="updateBMI()"></div>
+      <div class="field">
+        <label class="field-label">BIOLOGICAL SEX</label>
+        <div class="radio-group" id="rg-sex">
+          <label class="radio-btn"><input type="radio" name="sex" value="male"><div class="rdot"></div>Male</label>
+          <label class="radio-btn"><input type="radio" name="sex" value="female"><div class="rdot"></div>Female</label>
+          <label class="radio-btn"><input type="radio" name="sex" value="other"><div class="rdot"></div>Other</label>
+        </div>
+      </div>
+      <div class="field">
+        <label class="field-label">ETHNICITY</label>
+        <select id="f-ethnicity">
+          <option value="">Select ethnicity</option>
+          <option value="black">Black / African American</option>
+          <option value="hispanic">Hispanic / Latino</option>
+          <option value="asian">Asian / South Asian</option>
+          <option value="white">White / Caucasian</option>
+          <option value="native">Native American / Indigenous</option>
+          <option value="other">Other / Mixed</option>
+        </select>
+      </div>
+      <div class="field"><label class="field-label">HEIGHT (cm or ft'in")</label><input type="text" id="f-height" placeholder='e.g. 170 or 5&apos;7"' oninput="updateBMI()"></div>
+      <div class="field"><label class="field-label">WEIGHT (kg or lbs)</label><input type="text" id="f-weight" placeholder="e.g. 75 kg or 165 lbs" oninput="updateBMI()"></div>
+      <div class="field">
+        <label class="field-label">BLOOD GROUP</label>
+        <select id="f-blood-group">
+          <option value="">Select blood group</option>
+          <option value="A+">A+ (A Positive)</option>
+          <option value="A-">A− (A Negative)</option>
+          <option value="B+">B+ (B Positive)</option>
+          <option value="B-">B− (B Negative)</option>
+          <option value="AB+">AB+ (Universal Recipient)</option>
+          <option value="AB-">AB− (AB Negative)</option>
+          <option value="O+">O+ (O Positive)</option>
+          <option value="O-">O− (Universal Donor)</option>
+        </select>
+      </div>
+      <div class="field"><label class="field-label">COUNTRY / REGION</label><input type="text" id="f-country" placeholder="e.g. India, United States"></div>
+    </div>
+
+    <!-- BMI Widget -->
+    <div class="bmi-widget" id="bmi-widget" style="display:none;">
+      <div class="bmi-score">
+        <div class="num" id="bmi-num" style="color:var(--secondary)">--</div>
+        <div class="lbl">BMI</div>
+      </div>
+      <div class="bmi-details">
+        <h4 id="bmi-cat">Enter height & weight</h4>
+        <p id="bmi-desc">BMI is a risk factor for CKD — obesity increases risk by 83% (Harvard Health).</p>
+        <div class="bmi-bar-track"><div class="bmi-bar-fill" id="bmi-bar" style="width:0%;background:var(--success)"></div></div>
+      </div>
+    </div>
+
+    <div class="info-box" style="margin-top:16px;">
+      <strong>Why we ask:</strong> Black/African American individuals are 3× more likely to develop kidney failure (NIDDK). Age ≥60 independently raises GFR decline risk. BMI &gt;30 raises CKD risk by 83% (Harvard Health Publishing, 2023).
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-secondary" onclick="showScreen('screen-landing')">← Back</button>
+      <button class="btn btn-primary btn-lg" onclick="validateInfoAndNext()">Continue to Health Profile →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ HEALTH PROFILE ══ -->
+<div id="screen-health" class="hidden">
+  <div class="card">
+    <div class="card-title">🩺 Health &amp; Medical History</div>
+    <p class="card-sub">Diabetes and hypertension together cause ~75% of all CKD cases. Pre-existing conditions are the strongest predictors.</p>
+
+    <label class="field-label" style="display:block;margin-bottom:10px;">DO YOU HAVE ANY OF THESE? (check all that apply)</label>
+    <div class="risk-grid">
+      <div class="risk-item" onclick="toggleRisk(this)" data-value="diabetes"><div class="check-box"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div><span class="risk-icon">🩸</span><span>Diabetes (Type 1 or 2)</span></div>
+      <div class="risk-item" onclick="toggleRisk(this)" data-value="hypertension"><div class="check-box"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div><span class="risk-icon">❤️</span><span>High Blood Pressure</span></div>
+      <div class="risk-item" onclick="toggleRisk(this)" data-value="heart"><div class="check-box"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div><span class="risk-icon">💓</span><span>Heart Disease / CVD</span></div>
+      <div class="risk-item" onclick="toggleRisk(this)" data-value="obesity"><div class="check-box"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div><span class="risk-icon">⚖️</span><span>Obesity / Overweight</span></div>
+      <div class="risk-item" onclick="toggleRisk(this)" data-value="family"><div class="check-box"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div><span class="risk-icon">🧬</span><span>Family History of CKD</span></div>
+      <div class="risk-item" onclick="toggleRisk(this)" data-value="recurrent_uti"><div class="check-box"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div><span class="risk-icon">🦠</span><span>Recurrent Kidney/UTI Infections</span></div>
+      <div class="risk-item" onclick="toggleRisk(this)" data-value="kidney_stones"><div class="check-box"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div><span class="risk-icon">💎</span><span>Kidney Stones</span></div>
+      <div class="risk-item" onclick="toggleRisk(this)" data-value="autoimmune"><div class="check-box"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div><span class="risk-icon">🛡️</span><span>Autoimmune Disease (Lupus, etc.)</span></div>
+      <div class="risk-item" onclick="toggleRisk(this)" data-value="nsaids"><div class="check-box"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div><span class="risk-icon">💊</span><span>Regular NSAID use (Ibuprofen etc.)</span></div>
+      <div class="risk-item" onclick="toggleRisk(this)" data-value="smoking"><div class="check-box"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div><span class="risk-icon">🚬</span><span>Current / Former Smoker</span></div>
+      <div class="risk-item" onclick="toggleRisk(this)" data-value="anemia"><div class="check-box"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div><span class="risk-icon">🩸</span><span>Anemia / Low Hemoglobin (diagnosed)</span></div>
+    </div>
+
+    <!-- Advanced Lab Toggle -->
+    <div class="adv-toggle" onclick="toggleAdvanced()">
+      <div class="toggle-switch" id="adv-toggle-sw"></div>
+      <span>Advanced: I have recent lab results (improves accuracy)</span>
+    </div>
+
+    <div id="adv-lab-section" class="hidden">
+      <div class="form-grid cols-3">
+        <div class="field"><label class="field-label">CREATININE (mg/dL)</label><input type="number" id="f-creatinine" placeholder="e.g. 1.2" step="0.01" min="0" oninput="autoCalcEgfr()"></div>
+        <div class="field"><label class="field-label">eGFR (if known)</label><input type="number" id="f-egfr" placeholder="Auto-calculated" min="0" max="200"></div>
+        <div class="field"><label class="field-label">BLOOD PRESSURE</label><input type="text" id="f-bp" placeholder="e.g. 130/85"></div>
+      </div>
+
+      <!-- eGFR Auto Calculator -->
+      <div class="egfr-calc-box" id="egfr-calc-result" style="display:none;">
+        <h4>🧮 CKD-EPI 2021 Formula — Auto-Calculated eGFR</h4>
+        <div class="egfr-result">
+          <div class="egfr-number" id="egfr-calc-num">—</div>
+          <div class="egfr-label">
+            <strong id="egfr-stage-label">—</strong><br>
+            <span id="egfr-desc">eGFR = 142 × min(Scr/κ,1)^α × max(Scr/κ,1)^-1.2 × 0.9938^Age</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-secondary" onclick="showScreen('screen-info')">← Back</button>
+      <button class="btn btn-primary btn-lg" onclick="showScreen('screen-stage1')">Start Symptom Assessment →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ STAGE 1 ══ -->
+<div id="screen-stage1" class="hidden">
+  <div class="card">
+    <div class="stage-header"><div class="stage-badge">S1</div><div class="stage-info"><h3>Stage 1 — Kidney Damage, Near-Normal Function</h3></div><div class="gfr-pill">GFR ≥ 90</div></div>
+    <p class="card-sub">At Stage 1, kidneys are damaged but still function nearly normally. Most people have <em>no symptoms</em>. Select every subtle sign experienced in the past <strong>3 months</strong>.</p>
+    <div class="symptom-grid" id="symptoms-stage1"></div>
+    <div class="counter-bar"><span>Symptoms selected (Stage 1):</span><strong id="count-s1">0</strong></div>
+    <div class="btn-row">
+      <button class="btn btn-secondary" onclick="showScreen('screen-health')">← Back</button>
+      <button class="btn btn-primary btn-lg" onclick="showScreen('screen-stage2')">Next: Stage 2 →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ STAGE 2 ══ -->
+<div id="screen-stage2" class="hidden">
+  <div class="card">
+    <div class="stage-header"><div class="stage-badge">S2</div><div class="stage-info"><h3>Stage 2 — Mild Decrease in Kidney Function</h3></div><div class="gfr-pill">GFR 60–89</div></div>
+    <p class="card-sub">Stage 2 is still largely silent. Kidneys are mildly impaired. These symptoms are slightly more noticeable than Stage 1. Select all experienced in the past <strong>3 months</strong>.</p>
+    <div class="symptom-grid" id="symptoms-stage2"></div>
+    <div class="counter-bar"><span>Symptoms selected (Stage 2):</span><strong id="count-s2">0</strong></div>
+    <div class="btn-row">
+      <button class="btn btn-secondary" onclick="showScreen('screen-stage1')">← Back</button>
+      <button class="btn btn-primary btn-lg" onclick="showScreen('screen-stage3')">Next: Stage 3 →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ STAGE 3 ══ -->
+<div id="screen-stage3" class="hidden">
+  <div class="card">
+    <div class="stage-header"><div class="stage-badge" style="background:linear-gradient(135deg,#d97706,#f59e0b)">S3</div><div class="stage-info"><h3>Stage 3 — Moderate Decrease in Kidney Function</h3></div><div class="gfr-pill" style="color:#f59e0b;border-color:rgba(245,158,11,.3)">GFR 30–59</div></div>
+    <p class="card-sub">Stage 3 is the first stage where symptoms become clinically noticeable. Waste products begin accumulating. Select all experienced in the past <strong>3 months</strong>.</p>
+    <div class="symptom-grid" id="symptoms-stage3"></div>
+    <div class="counter-bar"><span>Symptoms selected (Stage 3):</span><strong id="count-s3">0</strong></div>
+    <div class="btn-row">
+      <button class="btn btn-secondary" onclick="showScreen('screen-stage2')">← Back</button>
+      <button class="btn btn-primary btn-lg" onclick="showScreen('screen-stage4')">Next: Stage 4 →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ STAGE 4 ══ -->
+<div id="screen-stage4" class="hidden">
+  <div class="card">
+    <div class="stage-header"><div class="stage-badge" style="background:linear-gradient(135deg,#dc2626,#ef4444)">S4</div><div class="stage-info"><h3>Stage 4 — Severe Decrease in Kidney Function</h3></div><div class="gfr-pill" style="color:#f87171;border-color:rgba(248,113,113,.3)">GFR 15–29</div></div>
+    <p class="card-sub">Stage 4 requires urgent nephrology care. Significant uremia occurs. These symptoms are serious. Select all that apply in the past <strong>3 months</strong>.</p>
+    <div class="symptom-grid" id="symptoms-stage4"></div>
+    <div class="counter-bar"><span>Symptoms selected (Stage 4):</span><strong id="count-s4">0</strong></div>
+    <div class="btn-row">
+      <button class="btn btn-secondary" onclick="showScreen('screen-stage3')">← Back</button>
+      <button class="btn btn-primary btn-lg" onclick="showScreen('screen-stage5')">Next: Stage 5 →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ STAGE 5 ══ -->
+<div id="screen-stage5" class="hidden">
+  <div class="card">
+    <div class="stage-header"><div class="stage-badge" style="background:linear-gradient(135deg,#7c3aed,#a855f7)">S5</div><div class="stage-info"><h3>Stage 5 — Kidney Failure (ESRD)</h3></div><div class="gfr-pill" style="color:#c084fc;border-color:rgba(192,132,252,.3)">GFR &lt; 15</div></div>
+    <p class="card-sub">Stage 5 is a medical emergency. If you experience these symptoms, <strong style="color:var(--accent)">seek immediate medical attention</strong>. Select all that apply.</p>
+    <div class="symptom-grid" id="symptoms-stage5"></div>
+    <div class="counter-bar"><span>Symptoms selected (Stage 5):</span><strong id="count-s5">0</strong></div>
+    <div class="btn-row">
+      <button class="btn btn-secondary" onclick="showScreen('screen-stage4')">← Back</button>
+      <button class="btn btn-success btn-lg" onclick="calculateResult()">🔬 Analyze &amp; Get Results</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ RESULT SCREEN ══ -->
+<div id="result-screen">
+  <div class="card">
+    <div class="result-hero">
+      <h2 style="font-size:1.35rem;font-weight:800;margin-bottom:16px;">🔬 Your CKD Risk Assessment</h2>
+      <div class="risk-meter">
+        <svg class="meter-svg" viewBox="0 0 190 95"><path class="meter-track" d="M19,90 A86,86 0 0,1 171,90"/><path class="meter-fill" id="meter-path" d="M19,90 A86,86 0 0,1 171,90" stroke-dasharray="0 270" stroke="#2ec4b6"/></svg>
+        <div class="meter-text"><div class="meter-pct" id="meter-pct">0%</div><div class="meter-lbl">CKD Risk</div></div>
+      </div>
+      <div id="risk-badge" class="risk-level-badge">—</div>
+      <p id="result-name" style="color:var(--muted);font-size:.88rem;margin-bottom:12px;"></p>
+      <p class="result-message" id="result-message"></p>
+    </div>
+
+    <!-- History comparison (if available) -->
+    <div id="history-compare-section"></div>
+
+    <!-- Charts -->
+    <div class="charts-row">
+      <div class="chart-card"><h4>OVERALL CKD RISK</h4><div class="chart-wrap"><canvas id="chart-donut"></canvas></div></div>
+      <div class="chart-card"><h4>SYMPTOM MATCH BY STAGE</h4><div class="chart-wrap"><canvas id="chart-bar"></canvas></div></div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- Recommended tests -->
+    <div class="card-title" style="margin-bottom:8px;">🧪 Recommended Diagnostic Tests</div>
+    <p style="color:var(--muted);font-size:.83rem;margin-bottom:6px;">Based on your profile, a nephrologist may order these tests:</p>
+    <ul class="test-list" id="recommended-tests"></ul>
+
+    <hr class="divider">
+
+    <!-- Diet Plan -->
+    <div class="diet-section">
+      <div class="diet-header" onclick="toggleDiet()">
+        <h3>🥗 Personalized Kidney Diet Plan <span id="diet-stage-tag" style="font-size:.75rem;color:var(--success);font-weight:600;"></span></h3>
+        <span class="diet-toggle-icon" id="diet-toggle-icon">▼</span>
+      </div>
+      <div class="diet-content" id="diet-content"></div>
+    </div>
+
+    <!-- Doctor Locator -->
+    <div class="doctor-locator">
+      <div class="doctor-icon">🏥</div>
+      <div class="doctor-body">
+        <h3>Find a Nephrologist Near You</h3>
+        <p>Based on your risk level, consulting a kidney specialist is recommended. Use these tools to locate certified nephrologists in your area.</p>
+        <div class="doctor-btns">
+          <button class="btn btn-primary" onclick="findDoctors('nephrologist')">🝺️ Nephrologists Near Me</button>
+          <button class="btn btn-secondary" onclick="findDoctors('kidney clinic')">🔬 Kidney Clinics</button>
+          <button class="btn btn-secondary" onclick="findDoctors('kidney specialist hospital')">🏨 Hospitals</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Anemia + Blood Bank Section -->
+    <div id="anemia-section" style="display:none;margin:20px 0;">
+      <div style="background:rgba(247,37,133,.07);border:1px solid rgba(247,37,133,.35);border-radius:16px;padding:20px 24px;">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
+          <span style="font-size:2rem;">🩸</span>
+          <div>
+            <h3 style="font-size:1rem;font-weight:800;color:#f72585;margin-bottom:3px;">Anemia Detected — Blood Bank Guidance</h3>
+            <p style="font-size:.82rem;color:var(--muted);line-height:1.5;">CKD frequently causes anemia because damaged kidneys produce less erythropoietin (EPO), the hormone that triggers red blood cell production. Your blood group determines which donors are compatible with you.</p>
+          </div>
+        </div>
+        <div id="anemia-blood-group-info" style="background:var(--card2);border-radius:12px;padding:14px 18px;margin-bottom:16px;font-size:.85rem;line-height:1.7;"></div>
+        <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+          <div style="flex:1;min-width:220px;">
+            <h4 style="font-size:.88rem;font-weight:700;margin-bottom:4px;">Find Blood Banks Near You</h4>
+            <p style="font-size:.79rem;color:var(--muted);">Locate a blood bank that stocks your blood type in your area. Call ahead to confirm availability.</p>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;">
+              <button class="btn btn-primary" onclick="findBloodBank()">🝺️ Blood Banks Near Me</button>
+              <button class="btn btn-secondary" onclick="findBloodBank('blood donation center')">💉 Donation Centers</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- Recommendations -->
+    <div class="card-title" style="margin-bottom:14px;">📋 Personalized Recommendations</div>
+    <div class="rec-grid" id="recommendations"></div>
+
+    <hr class="divider">
+
+    <!-- Citations -->
+    <div class="citations-section">
+      <div class="citations-toggle" onclick="toggleCitations()">
+        <span>📖 Research Sources &amp; Clinical References</span>
+        <span id="cite-icon">▼</span>
+      </div>
+      <div class="citations-body" id="citations-body">
+        <div class="cite-item"><div class="cite-num">[1]</div><div class="cite-text"><strong>Harvard Medical School / Harvard Health Publishing (2023)</strong> — "Chronic Kidney Disease: What You Need to Know." BMI &gt;30 raises CKD risk 83%. harvard.edu/health</div></div>
+        <div class="cite-item"><div class="cite-num">[2]</div><div class="cite-text"><strong>NIDDK / NIH — National Institute of Diabetes and Digestive and Kidney Diseases (2024)</strong> — "CKD Basics." 1 in 7 US adults have CKD; Black Americans 3× higher risk. niddk.nih.gov</div></div>
+        <div class="cite-item"><div class="cite-num">[3]</div><div class="cite-text"><strong>KDIGO 2024 Clinical Practice Guideline for CKD Evaluation and Management</strong> — Staging, symptom criteria, GFR thresholds. Kidney International, Vol 105, Issue 4S.</div></div>
+        <div class="cite-item"><div class="cite-num">[4]</div><div class="cite-text"><strong>National Kidney Foundation / KDOQI Guidelines</strong> — "CKD Stages and Symptoms." NKF clinical practice recommendations. kidney.org</div></div>
+        <div class="cite-item"><div class="cite-num">[5]</div><div class="cite-text"><strong>Mayo Clinic (2024)</strong> — "Chronic Kidney Disease — Symptoms and Causes." Clinical symptom descriptions for all 5 stages. mayoclinic.org</div></div>
+        <div class="cite-item"><div class="cite-num">[6]</div><div class="cite-text"><strong>Inker LA et al. (2021)</strong> — "New Creatinine- and Cystatin C–Based Equations to Estimate GFR without Race." NEJM 385:1737-1749. CKD-EPI 2021 formula used in this tool.</div></div>
+        <div class="cite-item"><div class="cite-num">[7]</div><div class="cite-text"><strong>Johns Hopkins Medicine (2023)</strong> — "Kidney Disease Stages." Uremia symptoms at Stage 4–5. hopkinsmedicine.org</div></div>
+        <div class="cite-item"><div class="cite-num">[8]</div><div class="cite-text"><strong>American Kidney Fund (2024)</strong> — "CKD Diet: What to Eat, What to Avoid." Renal diet guidance by stage. kidneyfund.org</div></div>
+      </div>
+    </div>
+
+    <div class="disclaimer">
+      ⚠️ <strong>Medical Disclaimer:</strong> This tool is for educational screening only and does NOT constitute a medical diagnosis. CKD can only be confirmed via laboratory tests (eGFR, uACR, serum creatinine) by a healthcare provider. Always consult a qualified nephrologist for diagnosis and treatment.
+    </div>
+
+    <!-- Print-only header stamp -->
+    <div class="print-header-note" style="text-align:center;border:1px solid #0d9488;border-radius:8px;padding:8px 14px;margin-bottom:16px;color:#0d9488;font-size:.82rem;font-weight:600;">
+      🫘 KidneyGuard — CKD Early Detection Report &nbsp;|&nbsp; Generated <span id="print-date"></span> &nbsp;|&nbsp; Not a medical diagnosis
+    </div>
+
+    <div class="btn-row" style="justify-content:center;margin-top:22px;">
+      <button class="btn btn-secondary btn-lg" onclick="restartAssessment()">↺ Retake Assessment</button>
+      <button class="btn btn-accent btn-lg" onclick="preparePrint()">🖨️ Download PDF Report</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ LOCATION MODAL ══ -->
+<div class="modal-overlay hidden" id="loc-modal" onclick="closeLocModalOnBg(event)">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeLocModal()">✕</button>
+    <div class="modal-title">📍 Find Nephrologists Within 20 km</div>
+    <p class="modal-sub">We'll search for <strong id="modal-query-label">nephrologists</strong> within a <strong>20 km radius</strong> of your location.</p>
+
+    <!-- Auto location -->
+    <button class="loc-auto-btn" id="loc-auto-btn" onclick="getAutoLocation()">
+      <span>📡</span> Use My Current Location (GPS)
+    </button>
+
+    <!-- Status -->
+    <div class="loc-status" id="loc-status">
+      <span id="loc-status-icon">⏳</span>
+      <span id="loc-status-text">Detecting your location…</span>
+    </div>
+
+    <div class="loc-divider">or enter manually</div>
+
+    <!-- Manual entry -->
+    <div class="field">
+      <label class="field-label">YOUR CITY / ADDRESS / PINCODE</label>
+      <input type="text" id="loc-manual-input" placeholder="e.g. Mumbai, 400001 or New York, NY" style="margin-top:4px;">
+    </div>
+
+    <!-- Doctor type -->
+    <div style="margin-top:16px;">
+      <label class="field-label" style="display:block;margin-bottom:8px;">SEARCH FOR</label>
+      <div class="loc-type-btns" style="grid-template-columns:1fr 1fr;">
+        <div class="loc-type-btn active" id="btn-type-0" onclick="selectDocType(0,'nephrologist')">🏥 Nephrologist</div>
+        <div class="loc-type-btn" id="btn-type-1" onclick="selectDocType(1,'kidney clinic')">🔬 Kidney Clinic</div>
+        <div class="loc-type-btn" id="btn-type-2" onclick="selectDocType(2,'kidney specialist hospital')">🏨 Hospital</div>
+        <div class="loc-type-btn" id="btn-type-3" onclick="selectDocType(3,'blood bank')">🩸 Blood Bank</div>
+      </div>
+    </div>
+
+    <p class="radius-note">📏 Results will be filtered within a <strong>20 km radius</strong> around your location</p>
+
+    <div class="btn-row" style="margin-top:20px;justify-content:stretch;">
+      <button class="btn btn-secondary" style="flex:1" onclick="closeLocModal()">Cancel</button>
+      <button class="btn btn-primary btn-lg" style="flex:2" onclick="openMapsWithLocation()">
+        🝺️ Search Nearby Doctors
+      </button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:10px;">
+    <span style="background:rgba(13,148,136,.1);border:1px solid rgba(13,148,136,.25);color:var(--primary);font-size:.68rem;padding:2px 10px;border-radius:20px;font-weight:600;">⚡ Vanilla JS</span>
+    <span style="background:rgba(13,148,136,.1);border:1px solid rgba(13,148,136,.25);color:var(--primary);font-size:.68rem;padding:2px 10px;border-radius:20px;font-weight:600;">📊 Chart.js 4.4</span>
+    <span style="background:rgba(13,148,136,.1);border:1px solid rgba(13,148,136,.25);color:var(--primary);font-size:.68rem;padding:2px 10px;border-radius:20px;font-weight:600;">📍 Geolocation API</span>
+    <span style="background:rgba(13,148,136,.1);border:1px solid rgba(13,148,136,.25);color:var(--primary);font-size:.68rem;padding:2px 10px;border-radius:20px;font-weight:600;">💾 LocalStorage</span>
+    <span style="background:rgba(13,148,136,.1);border:1px solid rgba(13,148,136,.25);color:var(--primary);font-size:.68rem;padding:2px 10px;border-radius:20px;font-weight:600;">🤖 Flask AI/ML Ready</span>
+    <span style="background:rgba(13,148,136,.1);border:1px solid rgba(13,148,136,.25);color:var(--primary);font-size:.68rem;padding:2px 10px;border-radius:20px;font-weight:600;">🩸 Blood Group Engine</span>
+  </div>
+  <div style="margin-bottom:6px;">
+    Clinical sources: <a href="#" onclick="return false">Harvard Medical School</a> · <a href="#" onclick="return false">NIDDK / NIH</a> · <a href="#" onclick="return false">KDIGO 2024</a> · <a href="#" onclick="return false">NKF</a> · <a href="#" onclick="return false">Mayo Clinic</a>
+  </div>
+  eGFR via <strong>CKD-EPI 2021</strong> (Inker et al., NEJM 2021) &nbsp;|&nbsp;
+  <strong>KidneyGuard</strong> — A portfolio project demonstrating full-stack web development, clinical ML integration &amp; health-tech UX &nbsp;|&nbsp;
+  © 2025 — Not a substitute for medical advice
+</footer>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
